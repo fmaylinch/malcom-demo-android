@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MalcomDemoAndroidModule/MalcomDemoAndroidModule.iml" filepath="$PROJECT_DIR$/MalcomDemoAndroidModule/MalcomDemoAndroidModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/malcom-demo-android.iml" filepath="$PROJECT_DIR$/malcom-demo-android.iml" />
+    </modules>
+  </component>
+</project>
+

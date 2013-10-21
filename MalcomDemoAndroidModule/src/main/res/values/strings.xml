@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MalcomDemoAndroidApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_title">Malcom Demo App</string>
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="info">Information will go here</string>
+
+</resources>

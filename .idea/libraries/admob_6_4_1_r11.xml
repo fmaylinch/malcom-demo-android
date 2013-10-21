@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="admob-6.4.1-r11">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/android/admob/admob/6.4.1-r11/admob-6.4.1-r11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

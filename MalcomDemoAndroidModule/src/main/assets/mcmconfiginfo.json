@@ -1,0 +1,6 @@
+{
+  "splashImageName":{"value":"Fresh-Green-640x960.jpg","type":"STRING"},
+  "splashImageUrl":{"value":"http://assets.local.mymalcom.com/60f82918-7dbb-4dae-8c74-3df5701bc1dd/17/splash","type":"STRING"},
+  "animationDelay": {"value": "5", "type": "INTEGER"},
+  "sampleText":{"value":"This is the local value for sample text","type":"STRING"}
+}

@@ -23,7 +23,8 @@ android {
     }
 }
 
+
 dependencies {
 	compile 'com.android.support:appcompat-v7:18.0.0'
-	compile 'com.malcom.library.android:malcom-android-library:1.0.5-SNAPSHOT'
+	compile 'com.malcom.library.android:malcom-android-library:2.0.4'
 }

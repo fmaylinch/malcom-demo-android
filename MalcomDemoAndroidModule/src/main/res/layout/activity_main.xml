@@ -8,6 +8,41 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
+	<LinearLayout
+		android:id="@+id/splash_layout"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:visibility="gone"
+		android:background="@android:color/black"
+		android:gravity="center_vertical">
+
+		<ImageView android:id="@+id/image_view"
+				   android:layout_width="fill_parent"
+				   android:layout_height="fill_parent"
+				   android:visibility="gone"/>
+
+		<LinearLayout
+			android:id="@+id/splash_progresszone"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="center_horizontal|center_vertical"
+			android:visibility="gone">
+			<ProgressBar
+				android:id="@+id/splash_progress_bar"
+				style="?android:attr/progressBarStyleSmall"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="2dip"/>
+			<TextView android:layout_height="wrap_content"
+					  android:layout_width="wrap_content"
+					  android:textColor="@android:color/white"
+					  android:text=""
+					  android:paddingLeft="4dp"/>
+		</LinearLayout>
+	</LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +56,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open activity"
+        android:text="Tweakings"
         android:id="@+id/openActivityButton"
         android:layout_below="@+id/titleTextView"
         android:layout_centerHorizontal="true" />
@@ -29,7 +64,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show info"
+        android:text="Show info below"
         android:id="@+id/showInfoButton"
         android:layout_below="@+id/openActivityButton"
         android:layout_centerHorizontal="true" />
@@ -42,5 +77,12 @@
         android:layout_below="@+id/showInfoButton"
         android:layout_centerHorizontal="true" />
 
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Unregister"
+		android:id="@+id/unregisterButton"
+		android:layout_below="@+id/infoText"
+		android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

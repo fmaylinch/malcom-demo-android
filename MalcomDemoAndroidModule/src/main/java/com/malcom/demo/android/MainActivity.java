@@ -1,6 +1,7 @@
 package com.malcom.demo.android;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.google.android.gcm.GCMRegistrar;
 import com.malcom.library.android.MCMDefines;
 import com.malcom.library.android.MalcomLib;
 import com.malcom.library.android.module.notifications.EnvironmentType;
+import com.malcom.library.android.utils.LocationUtils;
 
 public class MainActivity extends Activity {
 
@@ -28,6 +30,8 @@ public class MainActivity extends Activity {
 		Log.d(MCMDefines.LOG_TAG, "intent of this activity " + getIntent());
 
 		initDemoThings();
+
+		MalcomLib.loadConfiguration(this); // Configuration Module
 	}
 
 	@Override
@@ -45,9 +49,12 @@ public class MainActivity extends Activity {
 
 		super.onResume();
 
+		// -- Notifications module --
+
 		// TODO: From a certain Android version you should perform file system operations from a separate thread
 		// http://stackoverflow.com/questions/13323431/strictmodediskreadviolation-when
 		Log.d(MCMDefines.LOG_TAG, "Registering");
+//		MalcomLib.notificationsRegister(this, "New message", MainActivity.class);
 		MalcomLib.notificationsRegister(this, EnvironmentType.SANDBOX, "New message", true, MainActivity.class);
 
 		Log.d(MCMDefines.LOG_TAG, "Check new notifications");
@@ -75,7 +82,8 @@ public class MainActivity extends Activity {
 
 		Log.d(MCMDefines.LOG_TAG, "onDestroy " + this);
 
-		GCMRegistrar.onDestroy(getApplicationContext());
+		GCMRegistrar.onDestroy(getApplicationContext()); // Basic (beacons)
+
 		super.onDestroy();
 	}
 
@@ -93,20 +101,22 @@ public class MainActivity extends Activity {
 	protected void onNewIntent(Intent intent) {
 
 		Log.d(MCMDefines.LOG_TAG, "onNewIntent " + this);
-		setIntent(intent); // If you want to display the notification even when the activity is already on top
+
+		setIntent(intent); // Notifications module: If you want to display the notification even when the activity is already on top
 	}
 
 	private void initDemoThings() {
-
-		final MainActivity that = this;
 
 		final Button showInfoButton = (Button) findViewById(R.id.showInfoButton);
 		showInfoButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				TextView infoText = (TextView) findViewById(R.id.infoText);
-				// TODO: Display useful info here
-				infoText.setText("No info collected so far.\nWait for the developer to work a little more!");
+				String sampleText = MalcomLib.getConfiguredProperty("sampleText", "Default value for sample text");
+				Location location = LocationUtils.getLocation(MainActivity.this);
+				infoText.setText(
+						"Sample text: " + sampleText + "\n\n" +
+						location);
 			}
 		});
 
@@ -114,8 +124,16 @@ public class MainActivity extends Activity {
 		openActivityButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent infoActivityIntent = new Intent(that, InfoActivity.class);
+				Intent infoActivityIntent = new Intent(MainActivity.this, InfoActivity.class);
 				startActivity(infoActivityIntent);
+			}
+		});
+
+		final Button unregisterButton = (Button) findViewById(R.id.unregisterButton);
+		unregisterButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				MalcomLib.notificationsUnregister(MainActivity.this);
 			}
 		});
 	}

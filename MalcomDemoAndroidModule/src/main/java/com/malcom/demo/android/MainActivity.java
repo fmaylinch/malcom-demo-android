@@ -55,10 +55,10 @@ public class MainActivity extends Activity {
 		// http://stackoverflow.com/questions/13323431/strictmodediskreadviolation-when
 		Log.d(MCMDefines.LOG_TAG, "Registering");
 //		MalcomLib.notificationsRegister(this, "New message", MainActivity.class);
-		MalcomLib.notificationsRegister(this, EnvironmentType.SANDBOX, "New message", true, MainActivity.class);
+		MalcomLib.notificationsRegister(this, EnvironmentType.SANDBOX, "New message", MainActivity.class);
 
 		Log.d(MCMDefines.LOG_TAG, "Check new notifications");
-		MalcomLib.checkForNewNotifications(this);
+		MalcomLib.checkNotification(this);
 	}
 
 	@Override
